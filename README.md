@@ -32,21 +32,45 @@ $ make all
 
 The `cache_info.out` program prints out information about the cache on the current system. On Linux systems, this information can also be found in the /sys subsystem in the directories:
 
+```
 /sys/devices/system/cpu/cpu*/cache/index*/
+```
 
 Run the code with the command:
 
-./cache_info
+```shell
+$ ./cache_info
+```
 
-Program 2 - cache_off
+This particular lab was original authored by the late Prof. Emeritus M. Thomas and he preferred to have his binaries without the conventional `.out` extension. Avoid this potential pitfall when proceeding with the lab. If it worked you should see something like the following:
 
-This program defeats the L2 cache on Sleipnir to give really poor memory bandwidth (e.g. poor performance).
+```
+Parameters for the L1 cache (Data):
+
+        line_size=       64 
+             sets=       64 
+  pages per block=        1 (pagesize=     4096)
+    associativity=        8-way set associative
+       cache_size=       32K bytes total
+...
+``` 
+
+and so on. Note these values because they will be important for the next part of the lab.
+
+## Part 2 - Cache off
+
+The `cache_off` program defeats the L2 cache on the server to give really poor memory bandwidth (e.g. poor performance). Before you run this program, however, we need to modify it. It was originally designed for the department's obsolete server, `sleipnir`. Specifically, pay attention the readme starting on line 2. The data it gives here is for `sleipnir`, and you should use the new data from `odin`. For example, `odin`'s L2 has a `line_size` of 64 and only 512 `sets` thus `block_size` should be reduced to 32768.
+
+However, 
 
 Run the program with:
 
-./cache_off
+```shell
+$ ./cache_off
+```
 
 Note the poor performance, as this might be useful when evaluating the next program, which is the bulk of this lab.
+
 Program 3 - cache
 
 This program allocates a very large array and then accesses indexes using a skip amount specified on standard in to the program. For example, if you specify a skip amount of 127, it will access j, then j+127, and so on. For this portion of the lab, we will investigate the effects of giving different skip values (the line_offset variable in the program).
