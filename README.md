@@ -49,25 +49,80 @@ If it worked you should see something like the following:
 ```
 Parameters for the L1 cache (Data):
 
-        line_size=       64 
-             sets=       64 
+        line_size=       64
+             sets=       64
   pages per block=        1 (pagesize=     4096)
     associativity=        8-way set associative
        cache_size=       32K bytes total
-...
+
+Parameters for the L1 cache (Instruction):
+
+        line_size=       64
+             sets=       64
+  pages per block=        1 (pagesize=     4096)
+    associativity=        8-way set associative
+       cache_size=       32K bytes total
+
+Parameters for the L2 cache (Unified):
+
+        line_size=       64
+             sets=      512
+  pages per block=        8 (pagesize=     4096)
+    associativity=        8-way set associative
+       cache_size=      256K bytes total
+
+Parameters for the L3 cache (Unified):
+
+        line_size=       64
+             sets=    20480
+  pages per block=      320 (pagesize=     4096)
+    associativity=       20-way set associative
+       cache_size=    25600K bytes total
 ``` 
 
 and so on. Note these values because they will be important for the next part of the lab.
 
-### Sidebar - `***fatal error: no such file`
+### Sidebar - sleipnir.cs.csubak.edu
 
-This lab was designed for `odin`, which has an L3 cache. If you're on your own device and it is old enough, it is possible that it does not have an L3 cache! In which case, you may get the following:
+This lab was designed for odin, which has an L3 cache. If you're on your own device and it is old enough, it is possible that it does not have an L3 cache! In which case, you may get the following:
 
 ```shell
  *** fatal error: no such file: /sys/devices/system/cpu/cpu0/cache/index3/level...
  ```
  
-There is no validation to prevent the outermost for loop in `cache_info.c` to stop. If you got this error then it is not really an error, you just don't have an L3 cache. If you want to see this for yourself, try to run this program on `sleipnir`.
+There is no validation to prevent the outermost for loop in `cache_info.c` to stop. If you got this error then it is not really an error, you just don't have an L3 cache. 
+
+If you want to see this for yourself, try to run this program on sleipnir. You will also get the following when attempting to run it:
+
+```shell
+Parameters for the L1 cache (Data):
+
+        line_size=       64
+             sets=      512
+  pages per block=        8 (pagesize=     4096)
+    associativity=        2-way set associative
+       cache_size=       64K bytes total
+
+Parameters for the L1 cache (Instruction):
+
+        line_size=       64
+             sets=      512
+  pages per block=        8 (pagesize=     4096)
+    associativity=        2-way set associative
+       cache_size=       64K bytes total
+
+Parameters for the L2 cache (Unified):
+
+        line_size=       64
+             sets=     1024
+  pages per block=       16 (pagesize=     4096)
+    associativity=       16-way set associative
+       cache_size=     1024K bytes total
+
+ *** fatal error: no such file: /sys/devices/system/cpu/cpu0/cache/index3/level
+ ```
+ 
+It does indeed suffer an error. But another fun detail to notice are the differences between the older CPU in sleipnir vs. odin. Note that odin's cache is smaller and has less sets per line. However, odin has more 'ways' of associativity. For example. odin's L1 data cache is 8-way set associative, whereas sleipnir's is only 2-way. Also consider that odin has an L3 cache and sleipnir does not.
 
 ## Part 2 - Cache off
 
