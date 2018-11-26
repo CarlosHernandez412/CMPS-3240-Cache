@@ -68,7 +68,7 @@ int	main(int argc, char *argv[], char *envp[])
 	pagesize = getpagesize();	/* get the page size */
 
 					/* go through each cache */
-	for (num = 0 ; num <= 2 ; num++)
+	for (num = 0 ; num <= 3 ; num++)
 		{
 	/* ---------------------------- .../index[012]/level */
 		sprintf(pathname, "%sindex%d/%s",
