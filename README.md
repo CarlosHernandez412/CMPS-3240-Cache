@@ -67,7 +67,7 @@ This lab was designed for `odin`, which has an L3 cache. If you're on your own d
  *** fatal error: no such file: /sys/devices/system/cpu/cpu0/cache/index3/level...
  ```
  
-There is no validation to prevent the outermost for loop in `cache_info.c` to stop. If you got this error then it is not really an error, you just don't have an L3 cache. 
+There is no validation to prevent the outermost for loop in `cache_info.c` to stop. If you got this error then it is not really an error, you just don't have an L3 cache. If you want to see this for yourself, try to run this program on `sleipnir`.
 
 ## Part 2 - Cache off
 
@@ -105,4 +105,4 @@ Note any trends between the pairs of values (e.g. between 127 and 128 or between
 
 Upload your writeup to Moodle.
 
-M. Danforth, revised by A. Cruz 8/17
+M. Thomas and M. Danforth, revised by A. Cruz
