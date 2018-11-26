@@ -126,14 +126,14 @@ It does indeed suffer an error. But another fun detail to notice are the differe
 
 ## Part 2 - Cache off
 
-The `cache_off` program defeats the L2 cache on the server to give really poor memory bandwidth (e.g. poor performance). Before you run this program, however, we need to modify it. It was originally designed for the department's obsolete server, `sleipnir`. Specifically, pay attention the readme starting on line 2. The data it gives here is for `sleipnir`, and you should use the new data from `odin`. For example, `odin`'s L2 has a `line_size` of 64 and only 512 `sets` thus `block_size` should be reduced to 32768.
+The `cache_off.out` program defeats the L2 cache on the server to give really poor memory bandwidth (e.g. poor performance). Before you run this program, however, we need to modify it. It was originally designed for the department's obsolete server, sleipnir. Specifically, pay attention the readme starting on line 2. The data it gives here is for sleipnir, and you should use the new data from odin. For example, odin's L2 has a `line_size` of 64 and only 512 sets thus `block_size` should be reduced to 32768.
 
 However, 
 
 Run the program with:
 
 ```shell
-$ ./cache_off
+$ ./cache_off.out
 ```
 
 Note the poor performance, as this might be useful when evaluating the next program, which is the bulk of this lab.
