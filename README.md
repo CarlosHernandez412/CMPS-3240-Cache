@@ -138,9 +138,9 @@ $ ./cache_off.out
 
 Note the poor performance, as this might be useful when evaluating the next program, which is the bulk of this lab.
 
-Program 3 - cache
+# Part 3 - Cache
 
-This program allocates a very large array and then accesses indexes using a skip amount specified on standard in to the program. For example, if you specify a skip amount of 127, it will access j, then j+127, and so on. For this portion of the lab, we will investigate the effects of giving different skip values (the line_offset variable in the program).
+`cache.out` program allocates a very large array and then accesses indexes using a skip amount specified on standard in to the program. For example, if you specify a skip amount of 127, it will access j, then j+127, and so on. For this portion of the lab, we will investigate the effects of giving different skip values (the line_offset variable in the program).
 
 To run this program, you will give the following shell command:
 
@@ -152,11 +152,11 @@ Use the following skip values when running the program (note that these are pair
 
 127 128 251 256 509 512 1021 1024 2039 2048 4093 4096
 
-Lab Writeup
+# Lab Writeup
 
-Create a table of the number of runs, and the maximum, minimum, average, and standard deviation for the memory bandwidth in each of the runs of the cache program that was requested above.
+In addition to the other requirements of doing a lab report. Create a table of the number of runs, and the maximum, minimum, average, and standard deviation for the memory bandwidth in each of the runs of the cache program that was requested above. You may want to present the results as a figure instead.
 
-Note any trends between the pairs of values (e.g. between 127 and 128 or between 1021 and 1024) you saw when compiling this table. Try to explain these trends.
+Note any trends between the pairs of values (e.g. between 127 and 128 or between 1021 and 1024) you saw when compiling this table. Try to explain these trends. 
 
 Upload your writeup to Moodle.
 
