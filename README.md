@@ -26,11 +26,13 @@ To compile all of the programs for this lab, give the command:
 $ make all
 ```
 
+which should run without any errors or warnings.
+
 # Approach
 
 ## Part 1 - Cache info
 
-The `cache_info.out` program prints out information about the cache on the current system. On Linux systems, this information can also be found in the /sys subsystem in the directories:
+The `cache_info.out` program prints out information about the cache on the current system. On Linux systems, this information can also be found in the `/sys` subsystem in the directories:
 
 ```
 /sys/devices/system/cpu/cpu*/cache/index*/
@@ -39,10 +41,10 @@ The `cache_info.out` program prints out information about the cache on the curre
 Run the code with the command:
 
 ```shell
-$ ./cache_info
+$ ./cache_info.out
 ```
 
-This particular lab was original authored by the late Prof. Emeritus M. Thomas and he preferred to have his binaries without the conventional `.out` extension. Avoid this potential pitfall when proceeding with the lab. If it worked you should see something like the following:
+If it worked you should see something like the following:
 
 ```
 Parameters for the L1 cache (Data):
@@ -56,6 +58,16 @@ Parameters for the L1 cache (Data):
 ``` 
 
 and so on. Note these values because they will be important for the next part of the lab.
+
+### Sidebar - `***fatal error: no such file`
+
+This lab was designed for `odin`, which has an L3 cache. If you're on your own device and it is old enough, it is possible that it does not have an L3 cache! In which case, you may get the following:
+
+```shell
+ *** fatal error: no such file: /sys/devices/system/cpu/cpu0/cache/index3/level...
+ ```
+ 
+There is no validation to prevent the outermost for loop in `cache_info.c` to stop. If you got this error then it is not really an error, you just don't have an L3 cache. 
 
 ## Part 2 - Cache off
 
