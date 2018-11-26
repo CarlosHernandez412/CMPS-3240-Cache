@@ -70,7 +70,7 @@ long	prof_sec, prof_usec;	/* accumulated profiling (user process
 				and system work on its behalf) time */
 
 int	fixed_set = 7;
-int	block_size = 65536;	/* linesize * sets = 64K */
+int	block_size = 32768;	/* linesize * sets = 64K */
 #define	NUM_ENTRIES	64000000/* NUM_ENTRIES accessed in tmparray[] */
 #define NUM_ACCESSES	65536*16*32
 
@@ -83,7 +83,7 @@ int main(int argc, char *argv[], char *envp[])
 	char	filename[64];
 	int	cache_page, value;
 	FILE	*logfp;
-	int	i, j, k, ret, index;
+	int	i, ret, index;
 
 	volatile int	*tmparray;	/* tmparray points to the start
 				of an array of volatile int's . "volatile"
@@ -99,7 +99,7 @@ int main(int argc, char *argv[], char *envp[])
 			"uncacheable" (this is only the case with some
 			kernel memory). */
 
-	struct	rlimit rlims;
+	//struct	rlimit rlims;
 	struct	rusage	r_start, r_stop;
 
 	cache_page = getpagesize();
