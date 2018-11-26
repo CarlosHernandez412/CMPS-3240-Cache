@@ -73,7 +73,6 @@ int main(int argc, char *argv[], char *envp[])
 	FILE	*logfp;
 	int	i, j, k, ret;
 	int	*tmparray;	/* for malloc'd static array */
-	struct	rlimit rlims;
 	struct	rusage	r_start, r_stop;
 
 	cache_page = getpagesize();
