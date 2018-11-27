@@ -1,3 +1,6 @@
+# Lab specific stuff
+*.log
+
 # MAC stuff
 .DS_store
 

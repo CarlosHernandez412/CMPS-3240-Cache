@@ -70,7 +70,7 @@ long	prof_sec, prof_usec;	/* accumulated profiling (user process
 				and system work on its behalf) time */
 
 int	fixed_set = 7;
-int	block_size = 32768;	/* linesize * sets = 64K */
+int	block_size = 65536;	/* linesize * sets = 64K */
 #define	NUM_ENTRIES	64000000/* NUM_ENTRIES accessed in tmparray[] */
 #define NUM_ACCESSES	65536*16*32
 
