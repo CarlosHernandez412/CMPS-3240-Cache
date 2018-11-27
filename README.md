@@ -144,7 +144,9 @@ Note the poor performance, as this might be useful when evaluating the next prog
 
 To run this program, you will give the following shell command:
 
-while true; do echo "127" | ./cache | grep Bandwidth; sleep 10; done
+```shell
+while true; do echo "127" | ./cache.out | grep Bandwidth; sleep 10; done
+```
 
 where 127 is the skip value. Let this loop run for about a dozen iterations before hitting CTRL-C, so that you can gather an observed average (removing any outliers that may have been caused by other running programs). The results of the last iteration will be stored in the logfile cache_<skipValue>.log.
 
