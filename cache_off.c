@@ -1,21 +1,15 @@
-
-		/* cache_off.c: This program essentially defeats the
+/* cache_off.c: This program essentially defeats the
 	L2 cache in the case of sleipnir. You can use the program
 	cache_info.c to find the cache parameters listed below: 
-
        line_size  =   64 bytes (16 integer words)
             sets  = 1024
   pages_per_block =   16 pages
     associativity =   16-way set associative (i.e. 16 blocks)
        cache_size = 1024K bytes total
-
 	The program uses the size of each block
-
 	block_size = line_size * sets = 65536 (64K bytes)
-
 	and it repeatedly accesses an array in such a way that the
 	set (or index) of the memory access is ALWAYS THE SAME:
-
 	int 	i, index;
 	volatile int	tmparray[NUM_ENTRIES];
 	int	fixed_set = 7;
@@ -27,24 +21,18 @@
 		if (index >= NUM_ENTRIES)
 			index = fixed_set;
 		}
-
 	This defeats the L2 cache because we have only 16-way 
 	associativity in sleipnir's L2 cache.
-
 	In order to conserve memory and be NICE to other users IT IS
 	IMPORTANT THAT the program first lower its priority with 
-
 		nice(PRIO_MAX - 1);
-
 	and set a maximum RSS (resident set size) which will be
 	sufficient but not wasteful with
-
 		#define	NEW_MAX_RSS 256000000
 		struct	rlimit rlims;
 		rlims.rlim_cur = NEW_MAX_RSS;
 		rlims.rlim_max = NEW_MAX_RSS;
 		setrlimit(RLIMIT_RSS, &rlims);
-
 							Marc  */
 
 #include <stdio.h>
@@ -91,10 +79,8 @@ int main(int argc, char *argv[], char *envp[])
 				"write" is done (either to the L2 cache or
 				to main memory). In general, a volatile 
 				variable is:
-
 		1. still L2 cacheable - thread contention is automatically
 			resolved by the cache coherancy algorithm, unless
-
 		2. the actual page is declared "lock in core" and 
 			"uncacheable" (this is only the case with some
 			kernel memory). */
@@ -219,4 +205,3 @@ int main(int argc, char *argv[], char *envp[])
 	fclose(logfp);	/* close logfile */
 	return(0);
 	}  /* end of main */
-
